@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.chucknorrisapicompose.api.JokeViewModel
 import com.example.chucknorrisapicompose.navigation.Screen
 import com.example.chucknorrisapicompose.screens.HomeScreen
 import com.example.chucknorrisapicompose.screens.ProfileScreen
@@ -19,7 +20,7 @@ fun BottomNavGraph(navController: NavHostController) {
             AnimatedSplashScreen(navController = navController)
         }
         composable(route = BottomBarScreen.Home.route) {
-            HomeScreen()
+            HomeScreen(JokeViewModel())
         }
         composable(route = BottomBarScreen.Profile.route) {
             ProfileScreen()
