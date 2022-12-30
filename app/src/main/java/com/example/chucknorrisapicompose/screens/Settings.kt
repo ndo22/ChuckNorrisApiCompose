@@ -75,4 +75,5 @@ fun SettingsScreen() {
             }
         }
     }
-} val DarkThemeValue = compositionLocalOf { mutableStateOf(false) }
+}
+val DarkThemeValue = compositionLocalOf { mutableStateOf(false) }
