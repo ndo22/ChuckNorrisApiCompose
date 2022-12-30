@@ -9,9 +9,16 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
+
+
 class JokeViewModel : ViewModel() {
+
+
     private val _joke = mutableStateOf<Joke?>(null)
+
+
     var errorMessage: String by mutableStateOf("")
+
     val joke: MutableState<Joke?> = _joke
 
     fun getRandomJoke() {

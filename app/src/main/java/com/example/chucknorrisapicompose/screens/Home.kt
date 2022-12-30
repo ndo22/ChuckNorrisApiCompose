@@ -31,11 +31,12 @@ fun HomeScreen(
 
             Text(
                 text = joke?.value ?: "404 Joke not found",
-                fontSize = MaterialTheme.typography.h3.fontSize,
+                fontSize = MaterialTheme.typography.body1.fontSize,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 )
             Button(onClick = { getResponse(viewModel) }) {
+                Text("Refresh")
             }
         }
     }
