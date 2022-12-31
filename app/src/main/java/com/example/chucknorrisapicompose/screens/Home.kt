@@ -1,19 +1,19 @@
 package com.example.chucknorrisapicompose.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.chucknorrisapicompose.api.JokeViewModel
+import com.example.chucknorrisapicompose.ui.theme.AppTypography
+import com.example.chucknorrisapicompose.ui.theme.backgroundColor
+import com.example.chucknorrisapicompose.ui.theme.captionColor
 
 
 @Composable
@@ -21,23 +21,31 @@ fun HomeScreen(
     viewModel: JokeViewModel
 ) {
     val joke = viewModel.joke.value
+
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Magenta),
-        contentAlignment = Alignment.Center
+            .background(backgroundColor()),
     ) {
-        Column() {
 
+        Card(elevation = 10.dp, modifier = Modifier
+            .align(Alignment.TopCenter)
+            .padding(20.dp)) {
             Text(
                 text = joke?.value ?: "404 Joke not found",
-                fontSize = MaterialTheme.typography.body1.fontSize,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                )
-            Button(onClick = { getResponse(viewModel) }) {
-                Text("Refresh")
-            }
+                fontSize = AppTypography.h1.fontSize,
+                fontWeight = AppTypography.h1.fontWeight,
+                color = captionColor(),
+                modifier = Modifier.padding(10.dp),
+            )
+        }
+        Button(
+            onClick = { getResponse(viewModel) },
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(10.dp, 10.dp, 10.dp, 70.dp)
+        ) {
+            Text("Refresh")
         }
     }
 }
@@ -48,7 +56,7 @@ fun HomeScreenPreview() {
     HomeScreen(JokeViewModel())
 }
 
-fun getResponse(viewModel: JokeViewModel){
-    var res = viewModel.getRandomJoke()
+fun getResponse(viewModel: JokeViewModel) {
+    viewModel.getRandomJoke()
 }
 

@@ -6,23 +6,26 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
-val Teal700 = Color(0xFF018786)
-
 val Red = Color.fromRGB("#FF7C74")
+val DarkRed = Color.fromRGB("#E65353")
 val DarkBlue = Color.fromRGB("#0B1729")
+val LightBlue = Color.fromRGB("#22416F")
 val Silver20 = Color.fromRGB("#E5E5E5")
 val SilverLight = Color.fromRGB("#F8F7F8")
 val White = Color.fromRGB("#FFFFFF")
+val Black = Color.fromRGB("#000000")
 
 @Composable
-fun backgroundColor() = DarkBlue //orInLightTheme SilverLight
+fun backgroundColor() = DarkBlue orInLightTheme SilverLight
 
 @Composable
-fun captionColor() = Silver20 //orInLightTheme DarkBlue
+fun splashBackgroundColor() = Black orInLightTheme White
+
+@Composable
+fun captionColor() = Silver20 orInLightTheme DarkBlue
+
+@Composable
+fun topBarColor() = LightBlue orInLightTheme DarkRed
 
 private fun Color.Companion.fromRGB(rgb: String) = Color(android.graphics.Color.parseColor(rgb))
 
@@ -39,7 +42,7 @@ val AppLightColors = lightColors(
 
 @SuppressLint("ConflictingOnColor")
 val AppDarkColors = darkColors(
-    primary = Red,
+    primary = Silver20,
     secondary = White,
     background = DarkBlue,
     surface = DarkBlue,

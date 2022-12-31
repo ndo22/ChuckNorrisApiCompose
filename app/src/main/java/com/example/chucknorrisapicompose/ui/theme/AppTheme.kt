@@ -11,6 +11,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.chucknorrisapicompose.data.ThemeViewModel
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -22,6 +23,8 @@ fun AppTheme(
     val viewModel = remember { ThemeViewModel(context.dataStore) }
     val state = viewModel.state.observeAsState()
     val value = state.value ?: isSystemInDarkTheme()
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setSystemBarsColor(color = topBarColor())
 
     LaunchedEffect(viewModel) { viewModel.request() }
 
