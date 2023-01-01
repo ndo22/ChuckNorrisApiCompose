@@ -5,7 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.chucknorrisapicompose.api.JokeViewModel
+import com.example.chucknorrisapicompose.data.SearchViewModel
 import com.example.chucknorrisapicompose.navigation.Screen
+import com.example.chucknorrisapicompose.screens.AnimatedSplashScreen
 import com.example.chucknorrisapicompose.screens.HomeScreen
 import com.example.chucknorrisapicompose.screens.ProfileScreen
 import com.example.chucknorrisapicompose.screens.SettingsScreen
@@ -23,7 +25,7 @@ fun BottomNavGraph(navController: NavHostController) {
             HomeScreen(JokeViewModel())
         }
         composable(route = BottomBarScreen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(SearchViewModel())
         }
         composable(route = BottomBarScreen.Settings.route) {
             SettingsScreen()

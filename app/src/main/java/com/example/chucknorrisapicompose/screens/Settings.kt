@@ -18,10 +18,10 @@ import com.example.chucknorrisapicompose.ui.theme.dataStore
 @Composable
 fun SettingsScreen() {
     val context = LocalContext.current
-
     val viewModel = remember {
         ThemeViewModel(context.dataStore)
     }
+
     val value = viewModel.state.observeAsState().value
     val systemInDarkTheme = isSystemInDarkTheme()
 
@@ -57,7 +57,8 @@ fun SettingsScreen() {
                 Caption(
                     text = "\uD83C\uDF19  Dark mode",
                     color = captionColor(),
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    iconSize = 25.dp,
                 )
                 Switch(
                     checked = darkModeChecked,
@@ -76,4 +77,3 @@ fun SettingsScreen() {
         }
     }
 }
-val DarkThemeValue = compositionLocalOf { mutableStateOf(false) }

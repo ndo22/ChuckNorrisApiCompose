@@ -10,7 +10,7 @@ internal object Fonts {
     val Title = TextStyle(
 
         fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Normal,
         lineHeight = 26.sp,
         fontFeatureSettings = "pnum, lnum",
     )
@@ -25,9 +25,9 @@ internal object Fonts {
 
     val Caption = TextStyle(
 
-        fontSize = 12.sp,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
-        lineHeight = 16.sp,
+        lineHeight = 24.sp,
         fontFeatureSettings = "pnum, lnum",
     )
 }

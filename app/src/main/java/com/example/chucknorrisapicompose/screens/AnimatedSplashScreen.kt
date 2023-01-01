@@ -1,6 +1,5 @@
-package com.example.chucknorrisapicompose
+package com.example.chucknorrisapicompose.screens
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -13,6 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import com.example.chucknorrisapicompose.BottomBarScreen
+import com.example.chucknorrisapicompose.R
+import com.example.chucknorrisapicompose.ui.theme.orInLightTheme
 import com.example.chucknorrisapicompose.ui.theme.splashBackgroundColor
 import kotlinx.coroutines.delay
 
@@ -45,7 +47,7 @@ fun Splash(alpha: Float) {
         contentAlignment = Alignment.Center
     ) {
 
-        Image(painter = painterResource(id = R.drawable.chuck), contentDescription = "Image of chuck")
+        Image(painter = painterResource(id = R.drawable.chucknegative orInLightTheme R.drawable.chuck), contentDescription = "Image of chuck")
 
     }
 }
@@ -57,7 +59,7 @@ fun SplashScreenPreview() {
 }
 
 @Composable
-@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Preview
 fun SplashScreenDarkPreview() {
     Splash(alpha = 1f)
 }

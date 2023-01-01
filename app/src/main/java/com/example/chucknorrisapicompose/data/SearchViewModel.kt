@@ -1,4 +1,4 @@
-package com.example.chucknorrisapicompose.api
+package com.example.chucknorrisapicompose.data
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -6,28 +6,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.chucknorrisapicompose.api.APIService
+import com.example.chucknorrisapicompose.api.JokeQueryResult
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
+class SearchViewModel : ViewModel() {
 
-
-class JokeViewModel : ViewModel() {
-
-
-    private val _joke = mutableStateOf<Joke?>(null)
-
+    private val _jokes = mutableStateOf<JokeQueryResult?>(null)
 
     var errorMessage: String by mutableStateOf("")
 
-    val joke: MutableState<Joke?> = _joke
+    var jokes: MutableState<JokeQueryResult?> = _jokes
 
-    fun getRandomJoke() {
+    fun findJokes(text : String) {
         viewModelScope.launch {
             val apiService = APIService.getInstance()
             try {
-                //var tmp = async {apiService.getJoke()}
-                var tmp = async {apiService.getCategoryJoke("dev")}
-                _joke.value = tmp.await()
+                var tmp = async {apiService.findJokes(text)}
+                _jokes.value = tmp.await()
             } catch (e: Exception) {
                 errorMessage = e.message.toString()
             }

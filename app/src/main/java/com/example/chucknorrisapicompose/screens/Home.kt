@@ -30,15 +30,20 @@ fun HomeScreen(
 
         Card(elevation = 10.dp, modifier = Modifier
             .align(Alignment.TopCenter)
-            .padding(20.dp)) {
+            .padding(20.dp, 40.dp, 20.dp, 70.dp)) {
             Text(
-                text = joke?.value ?: "404 Joke not found",
+                text = joke?.value ?: "Place for your joke. Refresh",
                 fontSize = AppTypography.h1.fontSize,
                 fontWeight = AppTypography.h1.fontWeight,
                 color = captionColor(),
                 modifier = Modifier.padding(10.dp),
             )
         }
+//        Image(
+//            painter = rememberAsyncImagePainter("http://stackoverflow.com/apple-touch-icon.png"),
+//            contentDescription = "Image of chuck",
+//            modifier = Modifier.size(128.dp).align(Alignment.Center)
+//        )
         Button(
             onClick = { getResponse(viewModel) },
             modifier = Modifier
