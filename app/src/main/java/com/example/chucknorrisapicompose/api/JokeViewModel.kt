@@ -21,12 +21,14 @@ class JokeViewModel : ViewModel() {
 
     val joke: MutableState<Joke?> = _joke
 
-    fun getRandomJoke() {
+    fun getRandomJoke(text : String) {
         viewModelScope.launch {
             val apiService = APIService.getInstance()
             try {
-                //var tmp = async {apiService.getJoke()}
-                var tmp = async {apiService.getCategoryJoke("dev")}
+                val tmp = if (text == "all")
+                    async {apiService.getJoke()}
+                else
+                    async {apiService.getCategoryJoke(text)}
                 _joke.value = tmp.await()
             } catch (e: Exception) {
                 errorMessage = e.message.toString()

@@ -11,7 +11,7 @@ val Shapes = Shapes(
 )
 
 val AppShapes = Shapes(
-        small = RoundedCornerShape(percent = 50),
+        small = RoundedCornerShape(percent = 25),
         medium = RoundedCornerShape(size = 8.dp),
         large = RoundedCornerShape(size = 0.dp)
 )

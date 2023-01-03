@@ -184,9 +184,9 @@ fun basedOn(textAlign: TextAlign?): Arrangement.Horizontal {
 @Composable
 fun styleFrom(variant: TextVariant): TextStyle {
     return when (variant) {
-        TextVariant.TITLE -> Fonts.Title
-        TextVariant.BODY -> Fonts.Body
-        TextVariant.CAPTION -> Fonts.Caption
+        TextVariant.TITLE -> MaterialTheme.typography.h1
+        TextVariant.BODY -> MaterialTheme.typography.body1
+        TextVariant.CAPTION -> MaterialTheme.typography.caption
     }
 }
 

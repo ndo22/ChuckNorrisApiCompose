@@ -22,16 +22,25 @@ fun AppTheme(
     val context = LocalContext.current
     val viewModel = remember { ThemeViewModel(context.dataStore) }
     val state = viewModel.state.observeAsState()
-    val value = state.value ?: isSystemInDarkTheme()
+    val font = viewModel.font.observeAsState()
+
+    var test = isSystemInDarkTheme()
+
+    val value = if (state.value != null) state.value else test
     val systemUiController = rememberSystemUiController()
     systemUiController.setSystemBarsColor(color = topBarColor())
 
     LaunchedEffect(viewModel) { viewModel.request() }
 
-    DarkThemeValue.current.value = value
+    if (value != null) {
+        DarkThemeValue.current.value = value
+    }
+
+
+
     MaterialTheme(
-        colors = if (value) AppDarkColors else AppLightColors,
-        typography = AppTypography,
+        colors = if (value == true) AppDarkColors else AppLightColors,
+        typography = if(font.value == "small") AppSmallTypography else if(font.value == "large") AppLargeTypography else AppTypography,
         shapes = AppShapes,
         content = content
     )

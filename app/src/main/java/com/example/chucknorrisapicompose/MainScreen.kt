@@ -23,8 +23,8 @@ fun MainScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     showBottomBar = when (navBackStackEntry?.destination?.route) {
-        "splash_screen" -> false // on this screen bottom bar should be hidden
-        else -> true // in all other cases show bottom bar
+        "splash_screen" -> false
+        else -> true
     }
     Scaffold(
         bottomBar = { if (showBottomBar)

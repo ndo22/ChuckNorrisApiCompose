@@ -67,8 +67,8 @@ fun ProfileScreen(
                     ) {
                         Text(
                             text = joke.value,
-                            fontSize = AppTypography.h1.fontSize,
-                            fontWeight = AppTypography.h1.fontWeight,
+                            fontSize = MaterialTheme.typography.h1.fontSize,
+                            fontWeight = MaterialTheme.typography.h1.fontWeight,
                             color = captionColor(),
                             modifier = Modifier.padding(10.dp),
                         )
