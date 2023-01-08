@@ -1,7 +1,5 @@
 package com.example.chucknorrisapicompose.screens
 
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -21,25 +19,17 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun AnimatedSplashScreen(navController: NavHostController) {
-    var startAnimation by remember { mutableStateOf(false) }
-    val alphaAnim = animateFloatAsState(
-        targetValue = if (startAnimation) 1f else 0f,
-        animationSpec = tween(
-            durationMillis = 3000,
-        )
-    )
 
     LaunchedEffect(key1 = true) {
-        startAnimation = true
-        delay(4000)
+        delay(3000)
         navController.popBackStack()
         navController.navigate(route = BottomBarScreen.Home.route)
     }
-    Splash(alpha = alphaAnim.value)
+    Splash()
 }
 
 @Composable
-fun Splash(alpha: Float) {
+fun Splash() {
     Box(
         modifier = Modifier
             .background(splashBackgroundColor())
@@ -55,11 +45,11 @@ fun Splash(alpha: Float) {
 @Composable
 @Preview
 fun SplashScreenPreview() {
-    Splash(alpha = 1f)
+    Splash()
 }
 
 @Composable
 @Preview
 fun SplashScreenDarkPreview() {
-    Splash(alpha = 1f)
+    Splash()
 }

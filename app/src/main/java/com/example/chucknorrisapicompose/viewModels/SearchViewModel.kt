@@ -1,4 +1,4 @@
-package com.example.chucknorrisapicompose.data
+package com.example.chucknorrisapicompose.viewModels
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -23,7 +23,7 @@ class SearchViewModel : ViewModel() {
         viewModelScope.launch {
             val apiService = APIService.getInstance()
             try {
-                var tmp = async {apiService.findJokes(text)}
+                val tmp = async {apiService.findJokes(text)}
                 _jokes.value = tmp.await()
             } catch (e: Exception) {
                 errorMessage = e.message.toString()

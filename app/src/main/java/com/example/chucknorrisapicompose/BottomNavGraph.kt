@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.chucknorrisapicompose.api.JokeViewModel
-import com.example.chucknorrisapicompose.data.SearchViewModel
+import com.example.chucknorrisapicompose.viewModels.JokeViewModel
+import com.example.chucknorrisapicompose.viewModels.SearchViewModel
 import com.example.chucknorrisapicompose.navigation.Screen
 import com.example.chucknorrisapicompose.screens.AnimatedSplashScreen
 import com.example.chucknorrisapicompose.screens.HomeScreen

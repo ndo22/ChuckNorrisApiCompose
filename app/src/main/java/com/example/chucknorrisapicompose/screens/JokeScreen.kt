@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.chucknorrisapicompose.api.JokeViewModel
+import com.example.chucknorrisapicompose.viewModels.JokeViewModel
 import com.example.chucknorrisapicompose.ui.theme.backgroundColor
 import com.example.chucknorrisapicompose.ui.theme.captionColor
 
@@ -81,11 +81,6 @@ fun HomeScreen(
                     modifier = Modifier.padding(10.dp),
                 )
             }
-//        Image(
-//            painter = rememberAsyncImagePainter("http://stackoverflow.com/apple-touch-icon.png"),
-//            contentDescription = "Image of chuck",
-//            modifier = Modifier.size(128.dp).align(Alignment.Center)
-//        )
             Button(
                 onClick = { getResponse(viewModel, selectedOptionText) },
                 modifier = Modifier

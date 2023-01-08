@@ -9,7 +9,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.chucknorrisapicompose.data.ThemeViewModel
+import com.example.chucknorrisapicompose.viewModels.ThemeViewModel
 import com.example.chucknorrisapicompose.ui.theme.Caption
 import com.example.chucknorrisapicompose.ui.theme.backgroundColor
 import com.example.chucknorrisapicompose.ui.theme.captionColor
@@ -104,8 +104,8 @@ fun SettingsScreen() {
             ) {
                 TextField(
                     readOnly = true,
-                    value = selectedOptionText!!,
-                    onValueChange = { viewModel.switchFontSettings(selectedOptionText!!) },
+                    value = selectedOptionText,
+                    onValueChange = { viewModel.switchFontSettings(selectedOptionText) },
                     label = { Text("Text size") },
                     trailingIcon = {
                         ExposedDropdownMenuDefaults.TrailingIcon(

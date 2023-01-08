@@ -9,13 +9,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
-import com.example.chucknorrisapicompose.data.SearchViewModel
+import com.example.chucknorrisapicompose.viewModels.SearchViewModel
 import com.example.chucknorrisapicompose.ui.theme.AppTypography
 import com.example.chucknorrisapicompose.ui.theme.backgroundColor
 import com.example.chucknorrisapicompose.ui.theme.captionColor
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ProfileScreen(
     viewModel: SearchViewModel
@@ -23,6 +26,8 @@ fun ProfileScreen(
     val numberOfJokes = viewModel.jokes.value?.total
     val jokes = viewModel.jokes.value?.result
     var text by remember { mutableStateOf("") }
+
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Box(
         modifier = Modifier
@@ -39,10 +44,12 @@ fun ProfileScreen(
                     value = text,
                     onValueChange = { text = it }
                 )
-                IconButton(onClick = { getResponses(viewModel, text) },
+                IconButton(onClick = { getResponses(viewModel, text)
+                                     keyboardController?.hide()
+                                     },
                     modifier = Modifier
                         .padding(10.dp)) {
-                    Icon(imageVector = Icons.Default.Search, contentDescription = "image description")
+                    Icon(imageVector = Icons.Default.Search, contentDescription = "search button")
                 }
             }
 
@@ -52,7 +59,7 @@ fun ProfileScreen(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = if (numberOfJokes == null) "Place for your joke. Refresh" else "found $numberOfJokes jokes",
+                    text = if (numberOfJokes == null) "For searching jokes insert your desired text into text field above" else "found $numberOfJokes jokes",
                     fontSize = AppTypography.body1.fontSize,
                     fontWeight = AppTypography.body1.fontWeight,
                     color = captionColor(),
@@ -81,5 +88,6 @@ fun ProfileScreen(
 
 
 fun getResponses(viewModel: SearchViewModel, text : String) {
-    viewModel.findJokes(text)
+    if (text.length>2)
+        viewModel.findJokes(text)
 }

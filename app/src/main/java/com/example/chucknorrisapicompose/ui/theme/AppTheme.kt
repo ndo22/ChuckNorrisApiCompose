@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.chucknorrisapicompose.data.ThemeViewModel
+import com.example.chucknorrisapicompose.viewModels.ThemeViewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")

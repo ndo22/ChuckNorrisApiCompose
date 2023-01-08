@@ -1,4 +1,4 @@
-package com.example.chucknorrisapicompose.data
+package com.example.chucknorrisapicompose.viewModels
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
